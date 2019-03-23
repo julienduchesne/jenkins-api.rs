@@ -81,6 +81,9 @@ pub enum Path<'a> {
         path: &'a str,
     },
     CrumbIssuer,
+    Credentials {
+        domain: Name<'a>,
+    },
 }
 
 impl<'a> ToString for Path<'a> {
@@ -178,6 +181,10 @@ impl<'a> ToString for Path<'a> {
             Path::Computer { ref name } => format!("/computer/{}/api/json", name.to_string()),
             Path::Raw { path } => path.to_string(),
             Path::CrumbIssuer => "/crumbIssuer".to_string(),
+            Path::Credentials { ref domain } => format!(
+                "/credentials/store/system/domain/{}/api/json",
+                domain.to_string(),
+            ),
         }
     }
 }

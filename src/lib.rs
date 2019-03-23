@@ -68,6 +68,7 @@ pub mod helpers;
 pub mod action;
 pub mod build;
 pub mod changeset;
+pub mod credentials;
 pub mod home;
 pub mod job;
 pub mod nodes;
